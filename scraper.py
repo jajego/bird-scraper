@@ -38,7 +38,13 @@ def getImageUrls(birds):
             src_index = image.find("src")
             jpg_index = image.find("jpg/")
             final_url = "https://" + image[src_index+7:jpg_index+3].replace("thumb/", "")
-        
+            if final_url == "https://":
+                image = str(images[index][2])
+                print(image)
+                src_index = image.find("src")
+                jpg_index = image.find("jpg/")
+                final_url = "https://" + image[src_index+7:jpg_index+3].replace("thumb/", "")
+                  
         urls.append(final_url)
 
     print(urls)
