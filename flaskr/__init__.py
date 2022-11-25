@@ -35,7 +35,7 @@ def create_app(test_config=None):
         pass
 
     # a simple page that says hello
-    @app.route('/', methods=("GET", "POST", "OPTIONS"))
+    @app.route('/', methods=("GET", "POST"))
     def getUrls():
         print('Hello from / route')
         print(request.args)
