@@ -42,7 +42,10 @@ def create_app(test_config=None):
         if request.method == "GET":
             birds = [];
             print(request.args)
+            print(request.data)
+            print(request)
             for arg in request.args:
+                print(arg)
                 birds.append(request.args.get(arg))        
             urls = getImageUrls(birds)
             return urls
