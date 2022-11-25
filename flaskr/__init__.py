@@ -38,7 +38,8 @@ def create_app(test_config=None):
     @app.route('/', methods=("GET", "POST", "OPTIONS"))
     def getUrls():
         print('Hello from / route')
-        if request.method == "GET" or request.method == "OPTIONS":
+        print(request.args)
+        if request.method == "GET":
             birds = [];
             print(request.args)
             for arg in request.args:
