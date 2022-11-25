@@ -38,14 +38,15 @@ def create_app(test_config=None):
     @app.route('/', methods=("GET", "POST"))
     def getUrls():
         print('Hello from / route')
+        print('Request:')
+        print(request)
+        print('Request.args:')
         print(request.args)
         if request.method == "GET":
             birds = [];
             print(request.args)
-            print(request.data)
-            print(request)
             for arg in request.args:
-                print(arg)
+                print(request.args.get(arg))
                 birds.append(request.args.get(arg))        
             urls = getImageUrls(birds)
             return urls
