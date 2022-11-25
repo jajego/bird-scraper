@@ -8,7 +8,7 @@ def getImages(birds):
         page = requests.get(f"https://en.wikipedia.org/wiki/{bird}")
         soup = BeautifulSoup(page.content, 'html.parser')
         images.append(soup.find_all("img"))
-    
+        soup.decompose();
     return images;
 
 # write it so if it encounters a repeat it can just reference it
