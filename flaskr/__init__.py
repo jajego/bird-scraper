@@ -1,6 +1,6 @@
 import os
 
-from scraper import getImageUrls
+from scraper import getImages
 
 from flask import Flask
 from flask import request
@@ -48,7 +48,7 @@ def create_app(test_config=None):
             for arg in request.args:
                 print(request.args.get(arg))
                 birds.append(request.args.get(arg))        
-            urls = getImageUrls(birds)
+            urls = getImages(birds)
             return urls
 
     return app
