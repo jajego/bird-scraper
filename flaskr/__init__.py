@@ -8,7 +8,6 @@ from flask import jsonify
 
 from flask_cors import CORS
 
-
 def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
@@ -36,7 +35,7 @@ def create_app(test_config=None):
 
     # a simple page that says hello
     @app.route('/', methods=("GET", "POST"))
-    def getUrls():
+    async def getUrls():
         print('Hello from / route')
         print('Request:')
         print(request)
@@ -48,7 +47,7 @@ def create_app(test_config=None):
             for arg in request.args:
                 print(request.args.get(arg))
                 birds.append(request.args.get(arg))        
-            urls = getImages(birds)
+            urls = await getImages(birds)
             return urls
 
     return app
