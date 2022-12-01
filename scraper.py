@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup
 import requests;
 import time;
 import asyncio
+from selectolax.parser import HTMLParser
 
 async def getImages(birds):
     start = time.time()
@@ -17,9 +18,14 @@ async def getImages(birds):
 async def getImage(bird):
     url = f"https://ebird.org/species/{bird}"
     page = await get(url);
-    soup = BeautifulSoup(page.content, 'html.parser')
-    image = soup.img['src']
-    soup.decompose();
+    # Line A
+    # soup = BeautifulSoup(page.content, 'html.parser')
+    soup = HTMLParser(page.content)
+    
+    # Line B
+    image = soup.css_first("img").attributes["src"]
+    print(image)
+    # soup.decompose();
     return image
 
 
